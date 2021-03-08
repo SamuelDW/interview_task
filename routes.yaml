@@ -1,0 +1,30 @@
+index:
+    path: /
+    controller: App\Controller\HomeController::homeAction
+
+substance_search:
+  path: /substance-search/search/{uniqueIdentifier}
+  defaults: { _controller: App\Form\SubstanceSearchType }
+  methods: [POST]
+  requirements: \d+
+
+substance_search_form_content:
+  path: /substance-search/search-content/{uniqueIdentifier}
+  defaults: { _controller: App\Form\SubstanceSearchType }
+  methods: [GET]
+  requirements: \d+
+
+substance_number_ajax_search:
+  path: /ajax\substance/{uniqueIdentifier}
+  defaults: { _controller: App\Controller\HomeController::ajaxGetSubstancesByNumberAction }
+  options:
+    expose: true
+  methods: [GET]
+  requirements: \d+
+
+substance_name_ajax_search:
+    path: /ajax/substance/{substanceName}
+    defaults: { _controller: App\Controller\HomeController::ajaxGetSubstancesByNameAction }
+    options:
+      expose: true
+    methods: [GET]
